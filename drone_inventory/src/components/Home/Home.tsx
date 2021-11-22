@@ -63,7 +63,33 @@ export const Home = ( props:Props) =>{
 
     return(
         <div className={classes.root}>
+            <nav>
+                <div className={classes.navbar_container}>
+                    <h1 className={`${classes.logo}`}>
+                        <a href="#" className={`${classes.logo_a} ${classes.logo_navigation}`}>Ranger Drones</a>
+                    </h1>
 
+                    <ul className={`${classes.navigation} ${classes.logo_navigation}`}>
+                        <li>
+                            <a href="" className={classes.nav_a}>Home</a>
+                        </li>
+                        <li>
+                        <a href="" className={classes.nav_a}>About</a>
+                        </li>
+                        <li>    
+                            <a href="" className={classes.nav_a}>Learn More</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main className={classes.main}>
+                <div className={classes.main_text}>
+                    <h1>{props.title}</h1>
+                    <p>Drones are Kewl</p>
+                    <Button color='primary' variant='contained'>Click Me</Button>
+                </div>
+
+            </main>
         </div>
         
     )

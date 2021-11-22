@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Home } from './components'
+import { Home, Dashboard, SignIn } from './components'
 import reportWebVitals from './reportWebVitals';
 import './styles.css';
 

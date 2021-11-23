@@ -39,8 +39,10 @@ const useStyles = makeStyles((theme: Theme) =>
         appBarShift: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
-            transition: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen 
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen 
+            })    
         },
         menuButton:{
             marginRight: theme.spacing(2),
@@ -71,16 +73,16 @@ const useStyles = makeStyles((theme: Theme) =>
             }),
             marginLeft: -drawerWidth,
           },
-          contentShift: {
+        contentShift: {
             transition: theme.transitions.create('margin', {
               easing: theme.transitions.easing.easeOut,
               duration: theme.transitions.duration.enteringScreen,
             }),
             marginLeft: 0,
-            },
+        },
         toolbar:{
             display: 'flex',
-          },
+        },
         toolbar_button: {
             marginLeft: 'auto'
         }

@@ -20,6 +20,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import clsx from 'clsx';
 import { RouteComponentProps, withRouter, Switch, Route } from "react-router-dom";
+import {DataTable} from '../../components';
 // import { width } from '@mui/system';
 // import { ChevronRight } from '@mui/icons-material';
 
@@ -31,21 +32,21 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex'
         },
         appBar:{
-            transiton: theme.transitions.create(['margin', 'width'], {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen
-            }),
+            // transiton: theme.transitions.create(['margin', 'width'], {
+            //     easing: theme.transitions.easing.sharp,
+            //     duration: theme.transitions.duration.leavingScreen
+            // }),
         },
         appBarShift: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
-            transition: theme.transitions.create(['margin', 'width'], {
-                easing: theme.transitions.easing.easeOut,
-                duration: theme.transitions.duration.enteringScreen 
-            })    
+            // transition: theme.transitions.create(['margin', 'width'], {
+            //     easing: theme.transitions.easing.easeOut,
+            //     duration: theme.transitions.duration.enteringScreen 
+            // })    
         },
         menuButton:{
-            marginRight: theme.spacing(2),
+            // marginRight: theme.spacing(2),
         },
         hide:{
             display: 'none'
@@ -60,24 +61,24 @@ const useStyles = makeStyles((theme: Theme) =>
         drawerHeader:{
             display: 'flex',
             alignItems: 'center',
-            padding: theme.spacing(0, 1),
-            ...theme.mixins.toolbar,
+            // padding: theme.spacing(0, 1),
+            // ...theme.mixins.toolbar,
             justifyContent: 'flex-end',
         },
         content: {
             flexGrow: 1,
-            padding: theme.spacing(3),
-            transition: theme.transitions.create('margin', {
-              easing: theme.transitions.easing.sharp,
-              duration: theme.transitions.duration.leavingScreen,
-            }),
+            // padding: theme.spacing(3),
+            // transition: theme.transitions.create('margin', {
+            //   easing: theme.transitions.easing.sharp,
+            //   duration: theme.transitions.duration.leavingScreen,
+            // }),
             marginLeft: -drawerWidth,
           },
         contentShift: {
-            transition: theme.transitions.create('margin', {
-              easing: theme.transitions.easing.easeOut,
-              duration: theme.transitions.duration.enteringScreen,
-            }),
+            // transition: theme.transitions.create('margin', {
+            //   easing: theme.transitions.easing.easeOut,
+            //   duration: theme.transitions.duration.enteringScreen,
+            // }),
             marginLeft: 0,
         },
         toolbar:{
@@ -147,10 +148,10 @@ export const Dashboard = withRouter((props:DashProps) => {
                 classes={{
                     paper: classes.drawerPaper   
                 }}
-
              >
                  <div className={classes.drawerHeader}>
                     <IconButton onClick={handleDrawerClose}>
+                        <ChevronLeftIcon/>
                         {/* {theme.direction === 'ltr' ? <ChevronLeftIcon/>:<ChevronRightIcon/>} */}
                     </IconButton>
                  </div>
@@ -172,7 +173,7 @@ export const Dashboard = withRouter((props:DashProps) => {
             })}
             >
                 <div className={classes.drawerHeader}/>
-                <h1>Dashboard data later</h1>
+                <DataTable></DataTable>
 
             </main>
         </div>

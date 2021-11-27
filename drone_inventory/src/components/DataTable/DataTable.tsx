@@ -3,6 +3,12 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import {server_calls} from '../../api';
 import { useGetData } from '../../custom-hooks';
 
+interface gridData{
+  data:{
+    id?:string;
+  }
+}
+
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 140 },
     { field: 'price', headerName: 'Price', width: 130 },
@@ -24,14 +30,50 @@ const columns: GridColDef[] = [
     },
   ];
 
-  
+  interface gridData{
+    data:{
+      id?:string;
+    }
+  }
 
   export const DataTable = () =>{
     let {droneData, getData} = useGetData();
+    let [open, setOpen] = useState(false);
+    let [gridData, setData] = useState<GridSelectionModel>([])
+
+    let handleOpen = ()=> {
+      setOpen(true)
+    }
+
+    let deleteData = async () =>{
+      await server_calls.delete(`${gridData[0]}`)
+      getData()
+    }
+
+    console.log(gridData)
+
+
       return(
           <div style={{height: 400, width: '100%' }}>
             <h2>Drones in Inventory</h2>
-            <DataGrid rows={droneData} columns={columns} pageSize={5} checkboxSelection />
+            <DataGrid rows={droneData} columns={columns} 
+                      pageSize={5} 
+                      checkboxSelection
+                      onSelectionModelChange={(newSelectionModel) => { setData(newSelectionModel);}} 
+                      {...droneData}
+                      />
+            <Button onClick={handleOpen}>Update</Button>
+            <Button variant='contained' color='secondary' onClick={deleteData}>Delete</Button>
+            <Dialog open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
+              <DialogTitle id='form-dialog-title'></DialogTitle>
+              <DialogContent>
+                <DialogContentText>Updating: {gridData[0]}</DialogContentText>
+                  <DroneForm id = {`${gridData[0]}`}></DroneForm>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} style={{backgroundColor:'maroon'}}Cancel></Button>
+              </DialogActions>
+            </Dialog>
           </div>
       )
   }

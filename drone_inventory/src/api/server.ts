@@ -30,7 +30,7 @@ export const server_calls = {
     },
 
     update: async (id:string, data: any = {} ) => {
-        const response = await fetch(`https://drone-inventory-rangers75-tm.herokuapp.com/api/drones${id}`,{
+        const response = await fetch(`https://drone-inventory-rangers75-tm.herokuapp.com/api/drones/${id}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json,',
@@ -45,7 +45,7 @@ export const server_calls = {
     },
 
     delete: async (id:string ) => {
-        const response = await fetch(`https://drone-inventory-rangers75-tm.herokuapp.com/api/drones${id}`,{
+        const response = await fetch(`https://drone-inventory-rangers75-tm.herokuapp.com/api/drones/${id}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json,',

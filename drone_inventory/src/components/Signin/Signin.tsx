@@ -9,7 +9,8 @@ import {makeStyles} from '@mui/styles'
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import { fontSize } from '@mui/system';
 
-const MuiAlert = (pros:AlertProps) => {
+// Funcitonal component inside of this component to close SnackBar
+const MuiAlert = (props:AlertProps) => {
     return <Alert elevation={6} variant='filled' {...props} />
 }
 
@@ -80,7 +81,6 @@ export const SignIn = withRouter((props:SignInProps) => {
         if(response.user){
             handleSnackOpen()
         }
-
     }
 
     const sign_out = async () => {
@@ -108,12 +108,12 @@ export const SignIn = withRouter((props:SignInProps) => {
                 }>
                     <Button className={classes.googleButton} onClick={sign_out}>Sign out</Button>
                 </AuthCheck>
-                <SnackBar message={'Success'} open={open} autoHideDuration={4000} onClose={handleSnackClose}>
-                    <Alert onClose={handleSnackClose} severity='Success'>
+                <Snackbar message={'Success'} open={open} autoHideDuration={4000} onClose={handleSnackClose}>
+                    <MuiAlert onClose={handleSnackClose} severity='success'>
                         Successful Sign In
-                    </Alert>
-                </SnackBar>
+                    </MuiAlert>
+                </Snackbar>
             </Container>
         </div>
     )
-}
+})

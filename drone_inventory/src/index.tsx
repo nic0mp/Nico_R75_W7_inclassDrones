@@ -6,13 +6,13 @@ import './styles.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {store} from './redux/store';
-import {FirebaseAppProvider, AuthCheck} from 'reactfire'
+import {FirebaseAppProvider, AuthCheck} from 'reactfire';
 import 'firebase/auth';
 import {firebaseConfig} from './firebaseConfig'
 
 ReactDOM.render(
   <React.StrictMode>
-    <FireBaseAppProvider firebaseConfig={firebaseConfig}>
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Provider store = {store}>
         <Router>
           <Switch>
@@ -32,7 +32,7 @@ ReactDOM.render(
           </Switch>
         </Router>
       </Provider>
-    </FireBaseAppProvider>
+    </FirebaseAppProvider>
     
     
     

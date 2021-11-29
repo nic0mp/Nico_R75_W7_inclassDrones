@@ -1,9 +1,9 @@
-// import { homedir } from 'os';
-import React from 'react';
+import React, {Suspense} from 'react';
 import { makeStyles} from '@mui/styles';
 import { Button } from '@mui/material';
 import drone_image from '../../assets/images/sample_drone_image.jpg'
 import {Link} from 'react-router-dom';
+import { AuthCheck } from 'reactfire';
 
 interface Props{
     title: string;
@@ -71,15 +71,27 @@ export const Home = ( props:Props) =>{
                     </h1>
 
                     <ul className={`${classes.navigation} ${classes.logo_navigation}`}>
-                        <li>
-                            <Link to='/' className={classes.nav_a}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to='/dashboard' className={classes.nav_a}>About</Link>
-                        </li>
-                        <li>    
+                        <Suspense fallback={'...loading'}>
+                        <AuthCheck fallback={
+                            <li>    
                             <Link to='/signin' className={classes.nav_a}>Sign In</Link>
-                        </li>
+                            </li>
+                        }>
+                            <li>    
+                                <Link to='/signin' className={classes.nav_a}>Sign In</Link>
+                            </li>
+                            <li>
+                                <Link to='/' className={classes.nav_a}>Home</Link>
+                            </li>
+                            <li>
+                                <Link to='/dashboard' className={classes.nav_a}>About</Link>
+                            </li>
+                            <li>    
+                                <Link to='/signin' className={classes.nav_a}>Sign In</Link>
+                            </li>
+                        </AuthCheck>
+                      
+                        </Suspense>
                     </ul>
                 </div>
             </nav>

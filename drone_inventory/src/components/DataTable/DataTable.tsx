@@ -1,13 +1,15 @@
-import react from 'react'
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import React, {useState} from 'react'
+import { DataGrid, GridColDef, GridSelectionModel, GridValueGetterParams } from '@mui/x-data-grid';
 import {server_calls} from '../../api';
 import { useGetData } from '../../custom-hooks';
-
-interface gridData{
-  data:{
-    id?:string;
-  }
-}
+import { Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from "@mui/material";
+import {DroneForm} from '../../components'
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 140 },
@@ -44,6 +46,10 @@ const columns: GridColDef[] = [
     let handleOpen = ()=> {
       setOpen(true)
     }
+   
+    let handleClose = ()=> {
+      setOpen(false)
+    }
 
     let deleteData = async () =>{
       await server_calls.delete(`${gridData[0]}`)
@@ -71,7 +77,7 @@ const columns: GridColDef[] = [
                   <DroneForm id = {`${gridData[0]}`}></DroneForm>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose} style={{backgroundColor:'maroon'}}Cancel></Button>
+                <Button onClick={handleClose} style={{backgroundColor:'maroon'}}>Cancel</Button>
               </DialogActions>
             </Dialog>
           </div>

@@ -78,7 +78,7 @@ export const Home = ( props:Props) =>{
                             <Link to='/dashboard' className={classes.nav_a}>About</Link>
                         </li>
                         <li>    
-                            <Link to='/signin' className={classes.nav_a}>Learn More</Link>
+                            <Link to='/signin' className={classes.nav_a}>Sign In</Link>
                         </li>
                     </ul>
                 </div>
